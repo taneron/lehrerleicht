@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Lehrerleicht.Approval.Api/Lehrerleicht.Approval.Api.csproj" />
+    <Project Path="src/Lehrerleicht.Approval.Core/Lehrerleicht.Approval.Core.csproj" />
+    <Project Path="src/Lehrerleicht.Approval.Infrastructure/Lehrerleicht.Approval.Infrastructure.csproj" />
+  </Folder>
+</Solution>

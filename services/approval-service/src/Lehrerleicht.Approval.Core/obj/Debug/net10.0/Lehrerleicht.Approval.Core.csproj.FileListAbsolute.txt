@@ -1,0 +1,12 @@
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/bin/Debug/net10.0/Lehrerleicht.Approval.Core.deps.json
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/bin/Debug/net10.0/Lehrerleicht.Approval.Core.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/bin/Debug/net10.0/Lehrerleicht.Approval.Core.pdb
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.csproj.AssemblyReference.cache
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.AssemblyInfoInputs.cache
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.AssemblyInfo.cs
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.csproj.CoreCompileInputs.cache
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/refint/Lehrerleicht.Approval.Core.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.pdb
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/ref/Lehrerleicht.Approval.Core.dll
