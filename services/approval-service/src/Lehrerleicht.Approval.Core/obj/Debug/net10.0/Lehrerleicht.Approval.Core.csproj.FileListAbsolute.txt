@@ -10,3 +10,4 @@
 /Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/refint/Lehrerleicht.Approval.Core.dll
 /Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.pdb
 /Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/ref/Lehrerleicht.Approval.Core.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Core/obj/Debug/net10.0/Lehrerleicht.Approval.Core.sourcelink.json

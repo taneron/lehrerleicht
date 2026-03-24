@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lehrerleicht.Approval.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bd9a950277afc4c87a545191016dcc80b656fd1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cae333f0a7dc175fcf1fd51d8deb595ac5b6be6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lehrerleicht.Approval.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lehrerleicht.Approval.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
