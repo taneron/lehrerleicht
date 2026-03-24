@@ -1,1 +1,14 @@
 .DS_Store
+
+# C# build artifacts
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.user
+*.suo
+*.cache
+
+# IDE
+.vs/
+*.swp
