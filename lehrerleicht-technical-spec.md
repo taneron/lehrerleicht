@@ -232,6 +232,7 @@ Lehrerleicht.ApprovalService/
 │   │   │   ├── Approval.cs
 │   │   │   ├── PendingAction.cs
 │   │   │   ├── ActionHistory.cs
+│   │   │   ├── ActionOption.cs
 │   │   │   ├── Teacher.cs
 │   │   │   ├── School.cs
 │   │   │   └── NotificationPreference.cs
@@ -240,12 +241,14 @@ Lehrerleicht.ApprovalService/
 │   │   │   ├── ApprovalStatus.cs
 │   │   │   ├── ActionType.cs
 │   │   │   ├── ActionSource.cs
+│   │   │   ├── ActionOptionType.cs
 │   │   │   └── Priority.cs
 │   │   │
 │   │   ├── DTOs/
 │   │   │   ├── ApprovalDto.cs
 │   │   │   ├── CreateApprovalDto.cs
 │   │   │   ├── ApprovalDecisionDto.cs
+│   │   │   ├── ActionOptionDto.cs
 │   │   │   ├── TeacherDto.cs
 │   │   │   └── ActionHistoryDto.cs
 │   │   │
@@ -266,6 +269,7 @@ Lehrerleicht.ApprovalService/
 │       │   │   ├── ApprovalConfiguration.cs
 │       │   │   ├── PendingActionConfiguration.cs
 │       │   │   ├── ActionHistoryConfiguration.cs
+│       │   │   ├── ActionOptionConfiguration.cs
 │       │   │   ├── TeacherConfiguration.cs
 │       │   │   ├── SchoolConfiguration.cs
 │       │   │   └── NotificationPreferenceConfiguration.cs
@@ -299,7 +303,7 @@ Lehrerleicht.ApprovalService/
 └── Lehrerleicht.ApprovalService.sln
 ```
 
-### 4.2 Entity Definitions (Minimum 4 Required)
+### 4.2 Entity Definitions (7 Entities)
 
 #### Entity 1: Teacher
 
@@ -518,6 +522,9 @@ public class PendingAction
     // AI Analysis
     public double ConfidenceScore { get; set; }  // 0.0 - 1.0
     public string? AiReasoning { get; set; }  // Why AI proposed this action
+
+    // Navigation Properties
+    public ICollection<ActionOption> Options { get; set; } = new List<ActionOption>();
 }
 
 // Lehrerleicht.Approval.Core/Enums/ApprovalStatus.cs
@@ -567,7 +574,56 @@ public enum Priority
 }
 ```
 
-#### Entity 4: ActionHistory
+#### Entity 4: ActionOption
+
+```csharp
+// Lehrerleicht.Approval.Core/Entities/ActionOption.cs
+
+namespace Lehrerleicht.Approval.Core.Entities;
+
+/// <summary>
+/// Represents an option or question the teacher must respond to when approving an action.
+/// Used when a simple yes/no is not enough — e.g., multiselect choices, open-ended text input,
+/// or single-select options that the AI needs the teacher to decide on.
+/// </summary>
+public class ActionOption
+{
+    public Guid Id { get; set; }
+
+    // Parent
+    public Guid PendingActionId { get; set; }
+    public PendingAction PendingAction { get; set; } = null!;
+
+    // Option Definition
+    public ActionOptionType Type { get; set; }  // SingleSelect, MultiSelect, FreeText, Date, Confirm
+    public string Label { get; set; } = string.Empty;  // Question or prompt shown to teacher
+    public string? HelpText { get; set; }  // Additional explanation
+    public bool IsRequired { get; set; } = true;
+    public int SortOrder { get; set; } = 0;  // Display order
+
+    // Available Choices (JSON array for SingleSelect/MultiSelect, null for FreeText)
+    // e.g. ["Entschuldigt", "Unentschuldigt", "Arztbesuch"]
+    public string? ChoicesJson { get; set; }
+
+    // Teacher's Response (filled when teacher approves)
+    public string? SelectedValueJson { get; set; }  // JSON: string for FreeText, array for MultiSelect
+
+    // Timestamps
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+// Lehrerleicht.Approval.Core/Enums/ActionOptionType.cs
+public enum ActionOptionType
+{
+    SingleSelect,    // Teacher picks one from a list
+    MultiSelect,     // Teacher picks one or more from a list
+    FreeText,        // Teacher types a response
+    Date,            // Teacher picks a date
+    Confirm          // Teacher must explicitly confirm something (checkbox)
+}
+```
+
+#### Entity 5: ActionHistory
 
 ```csharp
 // Lehrerleicht.Approval.Core/Entities/ActionHistory.cs
@@ -626,7 +682,7 @@ public enum ActionHistoryType
 }
 ```
 
-#### Entity 5: NotificationPreference
+#### Entity 6: NotificationPreference
 
 ```csharp
 // Lehrerleicht.Approval.Core/Entities/NotificationPreference.cs
@@ -699,6 +755,7 @@ public class ApprovalDbContext : IdentityDbContext<Teacher>
     public DbSet<School> Schools => Set<School>();
     public DbSet<Approval> Approvals => Set<Approval>();
     public DbSet<PendingAction> PendingActions => Set<PendingAction>();
+    public DbSet<ActionOption> ActionOptions => Set<ActionOption>();
     public DbSet<ActionHistory> ActionHistories => Set<ActionHistory>();
     public DbSet<NotificationPreference> NotificationPreferences => Set<NotificationPreference>();
     
@@ -713,6 +770,7 @@ public class ApprovalDbContext : IdentityDbContext<Teacher>
         builder.Entity<School>().ToTable("schools");
         builder.Entity<Approval>().ToTable("approvals");
         builder.Entity<PendingAction>().ToTable("pending_actions");
+        builder.Entity<ActionOption>().ToTable("action_options");
         builder.Entity<ActionHistory>().ToTable("action_histories");
         builder.Entity<NotificationPreference>().ToTable("notification_preferences");
     }
@@ -1431,8 +1489,18 @@ interface PendingApprovalMessage {
     // AI metadata
     confidenceScore: number;
     aiReasoning?: string;
+
+    // Options the teacher must respond to (when simple yes/no is not enough)
+    options?: Array<{
+      type: 'SingleSelect' | 'MultiSelect' | 'FreeText' | 'Date' | 'Confirm';
+      label: string;
+      helpText?: string;
+      isRequired: boolean;
+      sortOrder: number;
+      choices?: string[];  // Available choices for SingleSelect/MultiSelect
+    }>;
   };
-  
+
   expiresAt: string;          // ISO timestamp
   createdAt: string;          // ISO timestamp
 }
@@ -1455,7 +1523,14 @@ interface ApprovalResultMessage {
     payload: Record<string, unknown>;
     targetSystem: string;
   };
-  
+
+  // Teacher's selected option values (when ActionOptions were present)
+  selectedOptions?: Array<{
+    label: string;
+    type: string;
+    selectedValue: unknown;  // string, string[], or date depending on type
+  }>;
+
   rejectionReason?: string;
 }
 ```
@@ -1865,7 +1940,7 @@ WEBUNTIS_PASSWORD=
 | Team Member | Assigned Endpoints | Entities |
 |-------------|-------------------|----------|
 | **Member 1** | Auth (5), Teachers (4) | Teacher, School |
-| **Member 2** | Approvals (6) | Approval, PendingAction |
+| **Member 2** | Approvals (6) | Approval, PendingAction, ActionOption |
 | **Member 3** | Actions (3), Notifications (4) | ActionHistory, NotificationPreference |
 | **Member 4** | Schools (4), Health (2), SignalR Hub | School (shared) |
 

@@ -42,7 +42,7 @@ The C# Approval Service must fulfill these requirements:
 | EF Core + PostgreSQL | `ApprovalDbContext` with Npgsql | ⬜ TODO |
 | ASP.NET Identity | Extended `IdentityUser` as `Teacher` | ⬜ TODO |
 | SignalR (Two-way communication) | `ApprovalHub` for real-time updates | ⬜ TODO |
-| Minimum 4 Entities | Teacher, School, Approval, PendingAction, ActionOptions(options teacher must select, like multiselect, or open ended question etc when a simple yes or no is not enough) ActionHistory, NotificationPreference (6 total) | ⬜ TODO |
+| Minimum 4 Entities | Teacher, School, Approval, PendingAction, ActionOption, ActionHistory, NotificationPreference (7 total) | ⬜ TODO |
 | Endpoint documentation | See Section 5 | ⬜ TODO |
 
 ### 1.3 Repository Structure
