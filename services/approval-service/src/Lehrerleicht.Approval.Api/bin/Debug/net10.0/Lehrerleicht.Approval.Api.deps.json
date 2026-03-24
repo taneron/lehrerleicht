@@ -11,7 +11,9 @@
           "Lehrerleicht.Approval.Core": "1.0.0",
           "Lehrerleicht.Approval.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.5",
+          "Microsoft.AspNetCore.OpenApi": "10.0.5",
           "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": "10.0.5",
+          "Scalar.AspNetCore": "2.13.14",
           "Serilog.AspNetCore": "9.0.0"
         },
         "runtime": {
@@ -35,6 +37,17 @@
         },
         "runtime": {
           "lib/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
+            "assemblyVersion": "10.0.5.0",
+            "fileVersion": "10.0.526.15411"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi/10.0.5": {
+        "dependencies": {
+          "Microsoft.OpenApi": "2.0.0"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.AspNetCore.OpenApi.dll": {
             "assemblyVersion": "10.0.5.0",
             "fileVersion": "10.0.526.15411"
           }
@@ -153,6 +166,14 @@
           }
         }
       },
+      "Microsoft.OpenApi/2.0.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.OpenApi.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
       "Npgsql/10.0.2": {
         "runtime": {
           "lib/net10.0/Npgsql.dll": {
@@ -179,6 +200,14 @@
           "lib/net8.0/RabbitMQ.Client.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.2.1.0"
+          }
+        }
+      },
+      "Scalar.AspNetCore/2.13.14": {
+        "runtime": {
+          "lib/net10.0/Scalar.AspNetCore.dll": {
+            "assemblyVersion": "2.13.14.0",
+            "fileVersion": "2.13.14.0"
           }
         }
       },
@@ -344,6 +373,13 @@
       "path": "microsoft.aspnetcore.identity.entityframeworkcore/10.0.5",
       "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.10.0.5.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.OpenApi/10.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vTcxIfOPyfFbYk1g8YcXJfkMnlEWVkSnnjxcZLy60zgwiHMRf2SnZR+9E4HlpwKxgE3yfKMOti8J6WfKuKsw6w==",
+      "path": "microsoft.aspnetcore.openapi/10.0.5",
+      "hashPath": "microsoft.aspnetcore.openapi.10.0.5.nupkg.sha512"
+    },
     "Microsoft.EntityFrameworkCore/10.0.5": {
       "type": "package",
       "serviceable": true,
@@ -421,6 +457,13 @@
       "path": "microsoft.identitymodel.tokens/8.0.1",
       "hashPath": "microsoft.identitymodel.tokens.8.0.1.nupkg.sha512"
     },
+    "Microsoft.OpenApi/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GGYLfzV/G/ct80OZ45JxnWP7NvMX1BCugn/lX7TH5o0lcVaviavsLMTxmFV2AybXWjbi3h6FF1vgZiTK6PXndw==",
+      "path": "microsoft.openapi/2.0.0",
+      "hashPath": "microsoft.openapi.2.0.0.nupkg.sha512"
+    },
     "Npgsql/10.0.2": {
       "type": "package",
       "serviceable": true,
@@ -441,6 +484,13 @@
       "sha512": "sha512-YKXEfg9fVQiTKgZlvIhAfPSFaamEgi8DsQmisCH0IAsU4FYLrtoguDrDj6JtJVGUt40QPnBLRH6fTQcAC4qsOg==",
       "path": "rabbitmq.client/7.2.1",
       "hashPath": "rabbitmq.client.7.2.1.nupkg.sha512"
+    },
+    "Scalar.AspNetCore/2.13.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-l4QRu4M9NwPAnYnaBOan5MXBdiIsKmKQ8gJUSqaqDUoAxJZ+xBsP6kmZoDf9Qovl4E2Fv5qOAWnfpVMUrs2flQ==",
+      "path": "scalar.aspnetcore/2.13.14",
+      "hashPath": "scalar.aspnetcore.2.13.14.nupkg.sha512"
     },
     "Serilog/4.2.0": {
       "type": "package",

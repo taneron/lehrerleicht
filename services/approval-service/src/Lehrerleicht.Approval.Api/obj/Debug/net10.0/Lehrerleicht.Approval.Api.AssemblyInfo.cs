@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lehrerleicht.Approval.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18c0162c7a6fe10eb0c2739495ba7ddf8aed2836")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bd9a950277afc4c87a545191016dcc80b656fd1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lehrerleicht.Approval.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lehrerleicht.Approval.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

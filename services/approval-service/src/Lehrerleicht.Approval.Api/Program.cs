@@ -13,6 +13,7 @@ using Lehrerleicht.Approval.Infrastructure.BackgroundServices;
 using Lehrerleicht.Approval.Infrastructure.Data;
 using Lehrerleicht.Approval.Infrastructure.Messaging;
 using Lehrerleicht.Approval.Infrastructure.Repositories;
+using Scalar.AspNetCore;
 using ApprovalSvc = Lehrerleicht.Approval.Core.Services.ApprovalService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -127,6 +128,9 @@ builder.Services.AddCors(options =>
     });
 });
 
+// OpenAPI
+builder.Services.AddOpenApi();
+
 // Health checks
 builder.Services.AddHealthChecks()
     .AddDbContextCheck<ApprovalDbContext>();
@@ -139,6 +143,15 @@ app.UseSerilogRequestLogging();
 app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
+
+// OpenAPI + Scalar
+app.MapOpenApi();
+app.MapScalarApiReference(options =>
+{
+    options.Title = "Lehrerleicht Approval Service";
+    options.Theme = ScalarTheme.BluePlanet;
+    options.DefaultHttpClient = new(ScalarTarget.JavaScript, ScalarClient.Fetch);
+});
 
 // Endpoints
 app.MapControllers();

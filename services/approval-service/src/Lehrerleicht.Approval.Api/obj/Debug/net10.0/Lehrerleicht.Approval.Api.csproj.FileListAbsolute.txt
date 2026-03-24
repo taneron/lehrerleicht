@@ -58,3 +58,7 @@
 /Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Api/obj/Debug/net10.0/Lehrerleicht.Approval.Api.pdb
 /Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Api/obj/Debug/net10.0/Lehrerleicht.Approval.Api.genruntimeconfig.cache
 /Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Api/obj/Debug/net10.0/ref/Lehrerleicht.Approval.Api.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Api/bin/Debug/net10.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Api/bin/Debug/net10.0/Microsoft.OpenApi.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Api/bin/Debug/net10.0/Scalar.AspNetCore.dll
+/Users/taner/code/lehrerleicht/services/approval-service/src/Lehrerleicht.Approval.Api/obj/Debug/net10.0/Lehrerleicht.Approval.Api.MvcApplicationPartsAssemblyInfo.cs
